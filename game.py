@@ -1,3 +1,5 @@
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 class KnightSearch:
 
@@ -8,20 +10,172 @@ class KnightSearch:
         self._so_far = ''
 
 
-    def _search_from(self, r_index, c_index):
-        return None
+    def _search_from(self, r_index, c_index, so_far):
+        # have we reached the goal with this move?
+        item = self.board[r_index][c_index]
+        cur_str = so_far + item
+        if self.goal.startswith(cur_str):
+            print(cur_str)
+        else:
+            return False
+        if cur_str == self.goal:
+            return True
+
+        i = r_index
+        j = c_index
+
+        # explore cell above
+        i = r_index - 1
+        if i >= 0:
+            # move 2 steps right
+            j = c_index + 2
+            if self._search_from(i, j, cur_str):
+                return True
+            # move 2 steps left
+            j = c_index - 2
+            if self._search_from(i, j, cur_str):
+                return True
+            # tmp_str = so_far + self.board[i][j]
+            # if self.goal.startswith(tmp_str):
+            #     return self._search_from(i, j, tmp_str)
+            i -= 1
+            if i >= 0:
+                # move 1 step right
+                j = c_index + 1
+                if self._search_from(i, j, cur_str):
+                    return True
+                # tmp_str = so_far + self.board[i][j]
+                # if self.goal.startswith(tmp_str):
+                #     return self._search_from(i, j, tmp_str)
+                # move 1 step left
+                j = c_index - 1
+                if self._search_from(i, j, cur_str):
+                    return True
+                # tmp_str = so_far + self.board[i][j]
+                # if self.goal.startswith(tmp_str):
+                #     return self._search_from(i, j, tmp_str)
+
+        # explore cell below
+        i = r_index + 1
+        if i < len(self.board):
+            # move 2 steps right
+            j = c_index + 2
+            if self._search_from(i, j, cur_str):
+                return True
+            # tmp_str = so_far + self.board[i][j]
+            # if self.goal.startswith(tmp_str):
+            #     return self._search_from(i, j, tmp_str)
+            # move 2 steps left
+            j = c_index - 2
+            if self._search_from(i, j, cur_str):
+                return True
+            # tmp_str = so_far + self.board[i][j]
+            # if self.goal.startswith(tmp_str):
+            #     return self._search_from(i, j, tmp_str)
+            i += 1
+            if i >= 0:
+                # move 1 step right
+                j = c_index + 1
+                if self._search_from(i, j, cur_str):
+                    return True
+                # tmp_str = so_far + self.board[i][j]
+                # if self.goal.startswith(tmp_str):
+                #     return self._search_from(i, j, tmp_str)
+                # move 1 step left
+                j = c_index - 1
+                if self._search_from(i, j, cur_str):
+                    return True
+                # tmp_str = so_far + self.board[i][j]
+                # if self.goal.startswith(tmp_str):
+                #     return self._search_from(i, j, tmp_str)
+
+        i = r_index
+
+        # explore cell to the left
+        j = c_index - 1
+        if j >= 0:
+            # move 2 steps above
+            i = r_index - 2
+            if self._search_from(i, j, cur_str):
+                return True
+            # tmp_str = so_far + self.board[i][j]
+            # if self.goal.startswith(tmp_str):
+            #     return self._search_from(i, j, tmp_str)
+            # move 2 steps below
+            i = r_index + 2
+            if self._search_from(i, j, cur_str):
+                return True
+            # tmp_str = so_far + self.board[i][j]
+            # if self.goal.startswith(tmp_str):
+            #     return self._search_from(i, j, tmp_str)
+            j -= 1
+            if j >= 0:
+                # move 1 step right
+                j = c_index + 1
+                if self._search_from(i, j, cur_str):
+                    return True
+                # tmp_str = so_far + self.board[i][j]
+                # if self.goal.startswith(tmp_str):
+                #     return self._search_from(i, j, tmp_str)
+                # move 1 step left
+                j = c_index - 1
+                if self._search_from(i, j, cur_str):
+                    return True
+                # tmp_str = so_far + self.board[i][j]
+                # if self.goal.startswith(tmp_str):
+                #     return self._search_from(i, j, tmp_str)
+
+        # explore cell to the right
+        j = c_index + 1
+        if j < len(self.board[0]):
+            # move 2 steps above
+            i = r_index - 2
+            if self._search_from(i, j, cur_str):
+                return True
+            # tmp_str = so_far + self.board[i][j]
+            # if self.goal.startswith(tmp_str):
+            #     return self._search_from(i, j, tmp_str)
+            # move 2 steps below
+            i = r_index + 2
+            if self._search_from(i, j, cur_str):
+                return True
+            # tmp_str = so_far + self.board[i][j]
+            # if self.goal.startswith(tmp_str):
+            #     return self._search_from(i, j, tmp_str)
+            j += 1
+            if j < len(self.board[0]):
+                # move 1 step right
+                j = c_index + 1
+                if self._search_from(i, j, cur_str):
+                    return True
+                # tmp_str = so_far + self.board[i][j]
+                # if self.goal.startswith(tmp_str):
+                #     return self._search_from(i, j, tmp_str)
+                # move 1 step left
+                j = c_index - 1
+                if self._search_from(i, j, cur_str):
+                    return True
+                # tmp_str = so_far + self.board[i][j]
+                # if self.goal.startswith(tmp_str):
+                #     return self._search_from(i, j, tmp_str)
+
+        return False
 
 
     def start(self):
-        while not self.found_goal:
-            for r_index, row in enumerate(self.board):
-                for c_index, item in enumerate(row):
-                    if item == self.goal[0]:
-                        self._so_far = self.goal[0]
-                        path = self._search_from(r_index, c_index)
-                        if path:
-                            print('Found path - %s', str(path))
-                            self.found_goal = True
+        logging.debug("Starting")
+        # while not self.found_goal:
+        for r_index, row in enumerate(self.board):
+            for c_index, item in enumerate(row):
+                if self.found_goal:
+                    break
+                if item == self.goal[0]:
+                    logging.debug("Found a 'p' at - " + str(r_index) + ", " + str(c_index))
+                    self._so_far = self.goal[0]
+                    path = self._search_from(r_index, c_index, self._so_far)
+                    if path:
+                        print('Found path - %s', str(path))
+                        self.found_goal = True
 
 ############################################################################
 
