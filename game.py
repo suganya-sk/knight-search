@@ -43,9 +43,6 @@ class KnightSearch:
             if self._inside_board(i, j):
                 if self._search_from(i, j, cur_str):
                     return True
-            # tmp_str = so_far + self.board[i][j]
-            # if self.goal.startswith(tmp_str):
-            #     return self._search_from(i, j, tmp_str)
             i -= 1
             if self._inside_board(i, j):
                 # move 1 step right
@@ -53,17 +50,11 @@ class KnightSearch:
                 if self._inside_board(i, j):
                     if self._search_from(i, j, cur_str):
                         return True
-                # tmp_str = so_far + self.board[i][j]
-                # if self.goal.startswith(tmp_str):
-                #     return self._search_from(i, j, tmp_str)
                 # move 1 step left
                 j = c_index - 1
                 if self._inside_board(i, j):
                     if self._search_from(i, j, cur_str):
                         return True
-                # tmp_str = so_far + self.board[i][j]
-                # if self.goal.startswith(tmp_str):
-                #     return self._search_from(i, j, tmp_str)
 
         # explore cell below
         i = r_index + 1
@@ -73,17 +64,11 @@ class KnightSearch:
             if self._inside_board(i, j):
                 if self._search_from(i, j, cur_str):
                     return True
-            # tmp_str = so_far + self.board[i][j]
-            # if self.goal.startswith(tmp_str):
-            #     return self._search_from(i, j, tmp_str)
             # move 2 steps left
             j = c_index - 2
             if self._inside_board(i, j):
                 if self._search_from(i, j, cur_str):
                     return True
-            # tmp_str = so_far + self.board[i][j]
-            # if self.goal.startswith(tmp_str):
-            #     return self._search_from(i, j, tmp_str)
             i += 1
             if self._inside_board(i, j):
                 # move 1 step right
@@ -91,17 +76,11 @@ class KnightSearch:
                 if self._inside_board(i, j):
                     if self._search_from(i, j, cur_str):
                         return True
-                # tmp_str = so_far + self.board[i][j]
-                # if self.goal.startswith(tmp_str):
-                #     return self._search_from(i, j, tmp_str)
                 # move 1 step left
                 j = c_index - 1
                 if self._inside_board(i, j):
                     if self._search_from(i, j, cur_str):
                         return True
-                # tmp_str = so_far + self.board[i][j]
-                # if self.goal.startswith(tmp_str):
-                #     return self._search_from(i, j, tmp_str)
 
         i = r_index
 
@@ -113,17 +92,11 @@ class KnightSearch:
             if self._inside_board(i, j):
                 if self._search_from(i, j, cur_str):
                     return True
-            # tmp_str = so_far + self.board[i][j]
-            # if self.goal.startswith(tmp_str):
-            #     return self._search_from(i, j, tmp_str)
             # move 2 steps below
             i = r_index + 2
             if self._inside_board(i, j):
                 if self._search_from(i, j, cur_str):
                     return True
-            # tmp_str = so_far + self.board[i][j]
-            # if self.goal.startswith(tmp_str):
-            #     return self._search_from(i, j, tmp_str)
             j -= 1
             if self._inside_board(i, j):
                 # move 1 step right
@@ -131,17 +104,11 @@ class KnightSearch:
                 if self._inside_board(i, j):
                     if self._search_from(i, j, cur_str):
                         return True
-                # tmp_str = so_far + self.board[i][j]
-                # if self.goal.startswith(tmp_str):
-                #     return self._search_from(i, j, tmp_str)
                 # move 1 step left
                 j = c_index - 1
                 if self._inside_board(i, j):
                     if self._search_from(i, j, cur_str):
                         return True
-                # tmp_str = so_far + self.board[i][j]
-                # if self.goal.startswith(tmp_str):
-                #     return self._search_from(i, j, tmp_str)
 
         # explore cell to the right
         j = c_index + 1
@@ -151,17 +118,11 @@ class KnightSearch:
             if self._inside_board(i, j):
                 if self._search_from(i, j, cur_str):
                     return True
-            # tmp_str = so_far + self.board[i][j]
-            # if self.goal.startswith(tmp_str):
-            #     return self._search_from(i, j, tmp_str)
             # move 2 steps below
             i = r_index + 2
             if self._inside_board(i, j):
                 if self._search_from(i, j, cur_str):
                     return True
-            # tmp_str = so_far + self.board[i][j]
-            # if self.goal.startswith(tmp_str):
-            #     return self._search_from(i, j, tmp_str)
             j += 1
             if self._inside_board(i, j):
                 # move 1 step right
@@ -169,18 +130,11 @@ class KnightSearch:
                 if self._inside_board(i, j):
                     if self._search_from(i, j, cur_str):
                         return True
-                # tmp_str = so_far + self.board[i][j]
-                # if self.goal.startswith(tmp_str):
-                #     return self._search_from(i, j, tmp_str)
                 # move 1 step left
                 j = c_index - 1
                 if self._inside_board(i, j):
                     if self._search_from(i, j, cur_str):
                         return True
-                # tmp_str = so_far + self.board[i][j]
-                # if self.goal.startswith(tmp_str):
-                #     return self._search_from(i, j, tmp_str)
-
         return False
 
 
