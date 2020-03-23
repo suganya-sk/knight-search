@@ -209,7 +209,5 @@ class KnightSearch:
                     logging.debug("Found a 'p' at - " + str(r_index) + ", " + str(c_index))
                     path = self._search_from(r_index, c_index, self._so_far)
                     if self.found_goal:
-                        break
-            if self.found_goal:
-                print('Found path - ', str(path))
-                break
+                        print('Found path - ', str(path))
+                        return
