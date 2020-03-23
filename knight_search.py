@@ -2,6 +2,10 @@ import logging
 logging.basicConfig(level=logging.CRITICAL)
 
 class KnightSearch:
+    """
+    A search in which the neighbour of a cell is reached only through moves of a knight in a chess board.
+    A knight moves in the shape of an L, two squares one way, one square the other.
+    """
 
     def __init__(self, goal, board):
         self.goal = goal
@@ -11,10 +15,23 @@ class KnightSearch:
 
 
     def _inside_board(self, r_index, c_index):
+        """
+        Checks if the cell with the position passed is inside the board
+        :param r_index: row index of cell
+        :param c_index: column index of cell
+        :return: bool
+        """
         return 0 <= r_index < len(self.board) and 0 <= c_index < len(self.board[0])
 
 
     def _search_from(self, r_index, c_index, so_far):
+        """
+        Searches for a path to goal from the position passed
+        :param r_index: row index of cell
+        :param c_index: column index of cell
+        :param so_far: part of goal traced so far
+        :return: path reaching goal from cell passed; returns an empty list if no such path exists
+        """
         path = []
         # have we reached the goal with this move?
         item = self.board[r_index][c_index]
@@ -180,6 +197,10 @@ class KnightSearch:
 
 
     def start(self):
+        """
+        Start search for goal in board using Knight search
+        :return:
+        """
         logging.debug("Starting")
         path = []
         for r_index, row in enumerate(self.board):
